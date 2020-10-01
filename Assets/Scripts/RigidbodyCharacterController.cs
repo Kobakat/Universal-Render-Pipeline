@@ -19,6 +19,9 @@ public class RigidbodyCharacterController : MonoBehaviour
     [SerializeField]
     float maxSpeed = 2;
 
+    [SerializeField, Range(0, 1)]
+    float turnSpeed = 0.5f; 
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -47,7 +50,16 @@ public class RigidbodyCharacterController : MonoBehaviour
         if(rb.velocity.sqrMagnitude < maxSpeed) 
             rb.AddForce(camRelativeInputDir * acceleration, ForceMode.Acceleration);
 
+        if(camRelativeInputDir.sqrMagnitude > 0 )
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(camRelativeInputDir);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, turnSpeed);
+        }
+            
+
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+
+
     }
 
     
