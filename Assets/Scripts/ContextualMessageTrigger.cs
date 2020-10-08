@@ -10,9 +10,15 @@ public class ContextualMessageTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("player"))
+        if(other.CompareTag("Player"))
         {
-            ContextualMessageTriggered.Invoke();
+            
+            if (ContextualMessageTriggered != null)
+            {
+                ContextualMessageTriggered.Invoke();               
+            }
+
+
         }
     }
 }
