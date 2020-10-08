@@ -508,7 +508,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9386
+  m_Name: pb_Mesh16710
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1497,6 +1497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433a1149d0363b4d8894a1d2bfcc5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  message: Hello
+  messageDuration: 2
 --- !u!114 &1335713468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2905,6 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d7c9f6d4605fb459def57ff5323991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeDuration: 3
 --- !u!1 &1868215393
 GameObject:
   m_ObjectHideFlags: 3
@@ -3229,7 +3232,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946633968}
-  m_LocalRotation: {x: 7.6955735e-14, y: 0.916444, z: -0.40016302, w: 3.073702e-14}
+  m_LocalRotation: {x: 0.000000016865686, y: 0.916444, z: -0.40016305, w: 0.000000038625256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3372,7 +3375,7 @@ MonoBehaviour:
   stopPhysicMat: {fileID: 13400000, guid: 26b37f804ec65a44fb7ad4c3c0cca8fc, type: 2}
   movePhysicMat: {fileID: 13400000, guid: 1b075f50bad48bb4f801dff3b0be9e0a, type: 2}
   acceleration: 10
-  maxSpeed: 2
+  maxSpeed: 6
   turnSpeed: 0.5
 --- !u!54 &2085931044
 Rigidbody:

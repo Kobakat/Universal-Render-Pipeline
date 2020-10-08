@@ -7,6 +7,10 @@ public class ContextualMessageController : MonoBehaviour
 {
     CanvasGroup canvasGroup = null;
     TMP_Text messageText = null;
+
+    [SerializeField]
+    float fadeDuration;
+
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -22,12 +26,22 @@ public class ContextualMessageController : MonoBehaviour
         messageText.text = message;
 
         yield return new WaitForSeconds(duration);
+        float elapsedTime = 0;
+        float startTime = Time.time;
+        while(elapsedTime < fadeDuration)
+        {
+            elapsedTime = Time.time - startTime;
+            canvasGroup.alpha = 1 - elapsedTime / fadeDuration;
+            yield return null;
+        }
+
         canvasGroup.alpha = 0;
   
     }
 
     void OnConTextualMessageTriggered(string message, float duration)
     {
+        StopAllCoroutines();
         StartCoroutine(ShowMessage(message , duration));
     }
 
