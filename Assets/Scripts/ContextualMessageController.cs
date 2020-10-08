@@ -26,9 +26,9 @@ public class ContextualMessageController : MonoBehaviour
   
     }
 
-    void OnConTextualMessageTriggered()
+    void OnConTextualMessageTriggered(string message, float duration)
     {
-        StartCoroutine(ShowMessage("Testing" , 2));
+        StartCoroutine(ShowMessage(message , duration));
     }
 
     void OnEnable()
