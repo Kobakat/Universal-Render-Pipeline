@@ -13,11 +13,19 @@ public class ContextualMessageController : MonoBehaviour
         messageText = GetComponent<TMP_Text>();
 
         canvasGroup.alpha = 0;
+
+        StartCoroutine(ShowMessage("Test", 2));
     }
 
-    void ShowMessage(string message, float duration)
+    IEnumerator ShowMessage(string message, float duration)
     {
+        canvasGroup.alpha = 1;
         messageText.text = message;
+
+        yield return new WaitForSeconds(duration);
+        canvasGroup.alpha = 0;
+
+        
     }
 
     // Update is called once per frame
