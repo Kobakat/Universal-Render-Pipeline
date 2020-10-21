@@ -776,7 +776,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645971913}
-  m_LocalRotation: {x: 0.000000018950502, y: 0.9013033, z: -0.43318874, w: 0.000000039428887}
+  m_LocalRotation: {x: -0.000000018950498, y: 0.9013033, z: -0.43318868, w: -0.000000039428887}
   m_LocalPosition: {x: 0, y: 11, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -913,7 +913,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788131746}
-  m_LocalRotation: {x: 0.000000010140083, y: 0.90903366, z: -0.4167228, w: 0.000000022119856}
+  m_LocalRotation: {x: -0.000000010140563, y: 0.90903366, z: -0.4167228, w: -0.00000002212008}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -987,7 +987,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929417109}
-  m_LocalRotation: {x: 0.000000013872703, y: 0.9013033, z: -0.43318874, w: 0.000000028863935}
+  m_LocalRotation: {x: -0.000000005077798, y: 0.9013033, z: -0.4331887, w: -0.000000010564952}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3232,7 +3232,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946633968}
-  m_LocalRotation: {x: 0.000000016865686, y: 0.916444, z: -0.40016305, w: 0.000000038625256}
+  m_LocalRotation: {x: -0.000000016865535, y: 0.916444, z: -0.40016305, w: -0.000000038625192}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3353,6 +3353,7 @@ GameObject:
   - component: {fileID: 2085931045}
   - component: {fileID: 2085931044}
   - component: {fileID: 2085931043}
+  - component: {fileID: 2085931049}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3469,6 +3470,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085931049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085931042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7aea07aa646b44f469c0865261ed0a03,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2085931043}
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b33b1430-70a8-4674-bd22-0c732ca7234b
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &2106206479
 GameObject:
   m_ObjectHideFlags: 3

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RigidbodyCharacterController : MonoBehaviour
 {
@@ -29,8 +30,7 @@ public class RigidbodyCharacterController : MonoBehaviour
     }
     void Update()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");       
+
     }
 
     void FixedUpdate()
@@ -62,5 +62,11 @@ public class RigidbodyCharacterController : MonoBehaviour
 
     }
 
+    public void OnMove(InputAction.CallbackContext context) 
+    {
+        input = context.ReadValue<Vector2>();
+    }
     
+
+
 }
