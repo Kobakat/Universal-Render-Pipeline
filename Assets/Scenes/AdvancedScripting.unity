@@ -913,7 +913,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788131746}
-  m_LocalRotation: {x: -0.000000010140563, y: 0.90903366, z: -0.4167228, w: -0.00000002212008}
+  m_LocalRotation: {x: 0.000000010140083, y: 0.90903366, z: -0.4167228, w: 0.000000022119856}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3374,8 +3374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopPhysicMat: {fileID: 13400000, guid: 26b37f804ec65a44fb7ad4c3c0cca8fc, type: 2}
   movePhysicMat: {fileID: 13400000, guid: 1b075f50bad48bb4f801dff3b0be9e0a, type: 2}
-  acceleration: 10
-  maxSpeed: 6
+  acceleration: 15
+  maxSpeed: 15
   turnSpeed: 0.5
 --- !u!54 &2085931044
 Rigidbody:
