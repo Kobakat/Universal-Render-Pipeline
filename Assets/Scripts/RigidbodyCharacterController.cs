@@ -14,7 +14,9 @@ public class RigidbodyCharacterController : MonoBehaviour
     PhysicMaterial movePhysicMat;
 
     Vector2 input;
-    
+    Vector3 inputDir;
+    Vector3 camRelativeInputDir;
+
     [SerializeField]
     float acceleration = 10;
     [SerializeField]
@@ -28,45 +30,68 @@ public class RigidbodyCharacterController : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent<Collider>();
     }
-    void Update()
-    {
-
-    }
 
     void FixedUpdate()
     {
-        Vector3 inputDir = new Vector3(input.x, 0, input.y);
+        SetCamRelativeInput();
+
+        MovePlayer();
+        SetPlayerRotation();
+
+        SetPhysicsMaterial();
+    }
+
+
+    public void OnMove(InputAction.CallbackContext context) 
+    {
+        input = context.ReadValue<Vector2>();
+    }
+
+    /// <summary>
+    /// Convers the player's input into a vector that is relevant to the camera
+    /// </summary>
+    void SetCamRelativeInput()
+    {
+        inputDir = new Vector3(input.x, 0, input.y);
         inputDir = inputDir.normalized;
 
         Vector3 camForward = Camera.main.transform.forward;
         camForward.y = 0;
 
         Quaternion camLocalRotation = Quaternion.LookRotation(camForward);
-        Vector3 camRelativeInputDir = camLocalRotation * inputDir;
-        
-
-        col.material = inputDir.sqrMagnitude > 0 ? movePhysicMat : stopPhysicMat;
-
-        if(rb.velocity.sqrMagnitude < maxSpeed) 
-            rb.AddForce(camRelativeInputDir * acceleration, ForceMode.Acceleration);
-
-        if(camRelativeInputDir.sqrMagnitude > 0 )
+        camRelativeInputDir = camLocalRotation * inputDir;
+    }
+    
+    /// <summary>
+    /// If the player has changed their input direction the player rotates to face their direction
+    /// </summary>
+    void SetPlayerRotation()
+    {
+        if (camRelativeInputDir.sqrMagnitude > 0)
         {
             Quaternion targetRotation = Quaternion.LookRotation(camRelativeInputDir);
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, turnSpeed);
         }
-            
+    }
+
+    /// <summary>
+    /// If the player is holding the stick in any direction, move the player
+    /// </summary>
+    void MovePlayer()
+    {
+        if (rb.velocity.sqrMagnitude < maxSpeed)
+            rb.AddForce(camRelativeInputDir * acceleration, ForceMode.Acceleration);
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-
-
     }
 
-    public void OnMove(InputAction.CallbackContext context) 
+    /// <summary>
+    /// If the player is moving, change the physics material to low friction. If they are stopped, set it to high friction.
+    /// </summary>
+    void SetPhysicsMaterial()
     {
-        input = context.ReadValue<Vector2>();
+        col.material = inputDir.sqrMagnitude > 0 ? movePhysicMat : stopPhysicMat;
     }
-    
 
 
 }
