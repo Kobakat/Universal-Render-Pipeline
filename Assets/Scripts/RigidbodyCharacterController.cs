@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class RigidbodyCharacterController : MonoBehaviour
 {
+    Animator anim;
     Rigidbody rb;
     Collider col;
 
@@ -23,12 +24,20 @@ public class RigidbodyCharacterController : MonoBehaviour
     float maxSpeed = 2;
 
     [SerializeField, Range(0, 1)]
-    float turnSpeed = 0.5f; 
+    float turnSpeed = 0.5f;
+
+    readonly int playerMoveInputHash = Animator.StringToHash("MoveInput");
 
     void Start()
     {
+        anim = this.GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent<Collider>();
+    }
+
+    void Update()
+    {
+        
     }
 
     void FixedUpdate()
@@ -45,6 +54,7 @@ public class RigidbodyCharacterController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context) 
     {
         input = context.ReadValue<Vector2>();
+        anim.SetFloat(playerMoveInputHash, input.sqrMagnitude);
     }
 
     /// <summary>
